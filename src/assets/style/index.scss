@@ -1,9 +1,10 @@
-@import './normalize.scss';
-@import './reset.scss';
+@import "./normalize.scss";
+@import "./reset.scss";
 
-@import './variable.scss';
+@import "./variable.scss";
 
-html,body{
-    color: #fff;
-    background:$color-theme;
+html,
+body {
+  color: $color-font-title;
+  background: $color-theme;
 }

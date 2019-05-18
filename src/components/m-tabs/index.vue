@@ -15,7 +15,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../../assets/style//variable.scss";
+@import '../../assets/style//variable.scss';
 .tabs {
   background: $color-pane;
   color: $color-font-content;
@@ -23,13 +23,21 @@
   justify-content: space-around;
   &-item {
     font-size: $font-size-lg;
-    padding: 10px 0 7px;
+    padding: 10px 0;
     cursor: pointer;
+    position: relative;
   }
   .router-link-active {
     color: $color-font-light;
-    border-bottom: 3px solid $color-font-light;
+    &::after {
+      position: absolute;
+      content: '';
+      height: 3px;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: $color-font-light;
+    }
   }
 }
 </style>
-

@@ -1,4 +1,4 @@
-import OriginJsonp from "jsonp";
+import OriginJsonp from 'jsonp'
 
 /**
  * 对 jsonp 库进行封装,返回 Promise
@@ -11,15 +11,15 @@ import OriginJsonp from "jsonp";
  */
 export default function jsonp(url, data, options) {
   return new Promise((resolve, reject) => {
-    url += (url.indexOf("?") !== -1 ? "&" : "?") + buildUrl(data);
+    url += (url.indexOf('?') !== -1 ? '&' : '?') + buildUrl(data)
     OriginJsonp(url, options, (err, res) => {
       if (!err) {
-        resolve(res);
+        resolve(res)
       } else {
-        reject(err);
+        reject(err)
       }
-    });
-  });
+    })
+  })
 }
 /**
  * 拼接 url 参数
@@ -27,10 +27,10 @@ export default function jsonp(url, data, options) {
  * @param {*} data
  */
 function buildUrl(data) {
-  let url = "";
+  let url = ''
   for (let k in data) {
-    let value = data[k] !== undefined ? data[k] : "";
-    url += `&${k}=${encodeURIComponent(value)}`;
-    return url ? url.substring(1) : "";
+    let value = data[k] !== undefined ? data[k] : ''
+    url += `&${k}=${encodeURIComponent(value)}`
   }
+  return url ? url.substring(1) : ''
 }

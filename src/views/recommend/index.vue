@@ -6,7 +6,7 @@
           <m-slider>
             <div v-for="item in recommendList" :key="item.id">
               <a :href="item.linkUrl">
-                <img @load="loadImage" :src="item.picUrl">
+                <img @load="loadImage" :src="item.picUrl" />
               </a>
             </div>
           </m-slider>
@@ -16,7 +16,7 @@
           <ul>
             <li v-for="item in discList" class="item" :key="item.dissid">
               <div class="icon">
-                <img width="60" height="60" v-lazy="item.imgurl">
+                <img width="60" height="60" v-lazy="item.imgurl" />
               </div>
               <div class="text">
                 <h2 class="name" v-html="item.creator.name"></h2>
@@ -27,16 +27,16 @@
         </div>
       </div>
       <div class="loading-container" v-show="!discList.length">
-        <m-loading></m-loading>
+        <m-loading />
       </div>
     </m-scroll>
   </div>
 </template>
 <script>
-import { getRecommend, getDiscList } from "../../api/recommend";
-import MSlider from "../../components/m-slider/index";
-import MScroll from "../../components/m-scroll/index";
-import MLoading from "../../components/m-loading/index";
+import { getRecommend, getDiscList } from '../../api/recommend'
+import MSlider from '../../components/m-slider/index'
+import MScroll from '../../components/m-scroll/index'
+import MLoading from '../../components/m-loading/index'
 export default {
   components: {
     MSlider,
@@ -47,38 +47,38 @@ export default {
     return {
       recommendList: [],
       discList: []
-    };
+    }
   },
   created() {
-    this._getRecommend();
-    this._getDiscList();
+    this._getRecommend()
+    this._getDiscList()
   },
   methods: {
     loadImage() {
       if (!this.checkloaded) {
-        this.checkloaded = true;
-        this.$refs.scroll.refresh();
+        this.checkloaded = true
+        this.$refs.scroll.refresh()
       }
     },
     _getRecommend() {
       getRecommend().then(res => {
         if (res.code == 0) {
-          this.recommendList = res.data.slider;
+          this.recommendList = res.data.slider
         }
-      });
+      })
     },
     _getDiscList() {
       getDiscList().then(res => {
         if (res.code == 0) {
-          this.discList = res.data.list;
+          this.discList = res.data.list
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
-@import "../../assets/style/variable";
+@import '../../assets/style/variable';
 .recommend {
   position: fixed;
   width: 100%;
@@ -101,7 +101,7 @@ export default {
         line-height: 65px;
         text-align: center;
         font-size: $font-size-md;
-        color: #fff;
+        color: $color-font-light;
       }
 
       .item {
@@ -127,7 +127,7 @@ export default {
 
           .name {
             margin-bottom: 10px;
-            color: $color-font-content;
+            color: $color-font-title;
           }
 
           .desc {

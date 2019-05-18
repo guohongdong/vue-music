@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <img width="24" height="24" src="./loading.gif" alt="加载动图">
-    <p class>{{title}}</p>
+  <div class="loading">
+    <img width="24" height="24" src="./loading.gif" alt="加载动图" />
+    <p class>{{ title }}</p>
   </div>
 </template>
 <script>
@@ -9,13 +9,13 @@ export default {
   props: {
     title: {
       type: String,
-      default: "正在加载..."
+      default: '正在加载...'
     }
   }
-};
+}
 </script>
 <style scoped lang="scss">
-@import "../../assets/style/variable";
+@import '../../assets/style/variable';
 
 .loading {
   width: 100%;
@@ -28,4 +28,3 @@ export default {
   }
 }
 </style>
-

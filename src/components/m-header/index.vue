@@ -1,11 +1,11 @@
 <template>
   <div class="m-header">
-    <div class="m-header-logo"></div>
+    <div class="m-header-logo" />
     <h1 class="m-header-name">D_DMusic</h1>
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../../assets/style/variable.scss";
+@import '../../assets/style/variable.scss';
 .m-header {
   position: relative;
   display: flex;
@@ -17,7 +17,7 @@
   &-logo {
     width: 30px;
     height: 30px;
-    background: url("../../assets/images/logo.png") no-repeat left top;
+    background: url('../../assets/images/logo.png') no-repeat left top;
     background-size: cover;
     margin-right: 10px;
   }
