@@ -1,6 +1,7 @@
 <template>
   <div class="singer" ref="singer">
-    <m-listview :list="singetList" ref="list" />
+    <m-listview @select="selectSinger" :list="singetList" ref="list" />
+    <router-view />
   </div>
 </template>
 <script>
@@ -8,6 +9,7 @@ import MListview from '../../components/m-listview'
 import { ERR_OK } from '../../api/config'
 import { getSingerList } from '../../api/singer'
 import { createSinger } from '../../assets/js/singer'
+import { mapMutations } from 'vuex'
 
 const HOT_NAME = '热门'
 const HOT_SINGER_LENGTH = 10
@@ -25,6 +27,12 @@ export default {
     this._getSingerList()
   },
   methods: {
+    selectSinger(singer) {
+      this.$router.push({
+        path: `/singer/${singer.id}`
+      })
+      this.setSinger(singer)
+    },
     _getSingerList() {
       getSingerList().then(res => {
         if (ERR_OK == 0) {
@@ -77,15 +85,13 @@ export default {
         return a.title.charCodeAt(0) - b.title.charCodeAt(0)
       })
       return hot.concat(narmal)
-    }
+    },
+    ...mapMutations({
+      setSinger: 'SET_SINGER'
+    })
   }
 }
 </script>
 <style lang="scss" scoped>
-.singer {
-  position: fixed;
-  top: 86px;
-  bottom: 0;
-  width: 100%;
-}
+@import './index';
 </style>

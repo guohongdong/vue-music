@@ -20,6 +20,7 @@
             v-for="item in group.children"
             class="list-group-item"
             :key="item.id"
+            @click="selectItem(item)"
           >
             <img class="avatar" v-lazy="item.avatar" />
             <span class="name">{{ item.name }}</span>
@@ -90,6 +91,9 @@ export default {
   methods: {
     scroll(pos) {
       this.scrollY = pos.y
+    },
+    selectItem(item) {
+      this.$emit('select', item)
     },
     refresh() {
       this.$refs.listview.refresh()

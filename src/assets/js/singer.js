@@ -6,6 +6,13 @@ export default class Singer {
   }
 }
 
+/**
+ * 创建歌手对象
+ *
+ * @export
+ * @param {*} singer
+ * @returns
+ */
 export function createSinger(singer) {
   return new Singer({
     id: singer.id,
